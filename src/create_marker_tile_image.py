@@ -72,6 +72,9 @@ def main(path, tile_size):
     tile_img_square = np.zeros((tile_size * 4, tile_size*4))
     tile_img_square[:, (tile_size//2):(-tile_size//2)] = tile_img
 
+    tile_img = cv2.flip(tile_img, 1) # Flip the image horizontally
+    tile_img_square = cv2.flip(tile_img_square, 1) # Flip the square image horizontally
+
     cv2.imwrite(os.path.join(path, "marker_tile.png"), tile_img)
     cv2.imwrite(os.path.join(path, "marker_tiles_square.png"), tile_img_square)
 
@@ -81,6 +84,7 @@ def main(path, tile_size):
     config["aruco_dict"] = "4X4_250" # 6X6_250
     config["markers"] = marker_config
 
+    # CURRENTLY INCORRECT
     with open(os.path.join(path, "marker_info.yml"), "w") as yml_file:
         yaml.dump(config, yml_file)
 
