@@ -44,9 +44,9 @@ class TileMap:
 
 @click.command()
 @click.argument("path", type=click.Path(exists=True))
-@click.option("--tile_size", type=int, default=100)
+@click.option("--tile_size", type=int, default=200)
 def main(path, tile_size):
-    margin = int(0.4 * tile_size) #0.3, 0.1
+    margin = int(0.3 * tile_size) #0.3, 0.1, 0.4
 
     marker_factory = MarkerFactory()
     tile_map = TileMap(tile_size)
@@ -82,6 +82,7 @@ def main(path, tile_size):
 
     config = dict()
     config["aruco_dict"] = "4X4_250" # 6X6_250
+    config["marker_size"] = tile_size - 2 * margin
     config["markers"] = marker_config
 
     # CURRENTLY INCORRECT

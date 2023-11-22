@@ -1,4 +1,5 @@
 aruco_dict: 4X4_250
+marker_size: 80
 markers:
   back: 4
   bottom: 1
